@@ -1,0 +1,10 @@
+DEFAULT
+    User-Name =* ANY,
+    EAP-Message =* ANY,
+    Message-Authenticator =* ANY,
+    State =* ANY,
+    Proxy-State =* ANY,      
+    Operator-Name =* ANY,
+    Class =* ANY,
+    Calling-Station-Id =* ANY,
+    Chargeable-User-Identity =* ANY

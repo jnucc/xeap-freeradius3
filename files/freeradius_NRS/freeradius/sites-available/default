@@ -405,10 +405,8 @@ post-auth {
 	#  un-comment the following line, and enable the
 	#  'detail reply_log' module.
 	reply_log
-                f_ticks
-                eduroam_log
-          f_ticks
-  
+         #       f_ticks
+         #      eduroam_log  
           #if  (  User-Name  != "radius_user@eduroam.xe" ) {
           #    redundant {
           #     sql
@@ -526,8 +524,8 @@ post-auth {
 	Post-Auth-Type REJECT {
 		# log failed authentications in SQL, too.
                    reply_log
-                   f_ticks
-                   eduroam_log
+  #                 f_ticks
+  #                 eduroam_log
                    redundant  {
 #		    sql
                        ok
@@ -562,7 +560,7 @@ pre-proxy {
 	#  The client requests the CUI by sending a CUI attribute
 	#  containing one zero byte.
 	#  Uncomment the line below if *requesting* the CUI.
-	cui
+	#cui
 
 	#  Uncomment the following line if you want to change attributes
 	#  as defined in the preproxy_users file.

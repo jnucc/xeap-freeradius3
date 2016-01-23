@@ -6,7 +6,6 @@
               #Access-Reject = "F-TICKS/eduroam/1.0#REALM=%{Realm}#VISCOUNTRY=XE#VISINST=1eduroam.xe#CSI=%{Calling-Station-Id}#RESULT=FAIL#"
           Access-Accept = "AUTH-ID=%I#TIME=%l#REALM=%{Realm}#CSI=%{Calling-Station-Id}/%{Called-Station-Id}#USER=%{md5:%{User-Name}}#NASIP=%{NAS-IP-Address}#RESULT=OK"
           Access-Reject = "AUTH-ID=%I#TIME=%l#REALM=%{Realm}#CSI=%{Calling-Station-Id}/%{Called-Station-Id}#USER=%{md5:%{User-Name}}#NASIP=%{NAS-IP-Address}#RESULT=FAIL"
-       }
 }
 
 linelog eduroam_log {
@@ -50,5 +49,4 @@ linelog Accounting-Request {
     # don't log anything for other Acct-Status-Types.
     unknown = ""
     }
-}
 }

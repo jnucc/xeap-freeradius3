@@ -331,8 +331,8 @@ post-auth {
 	#
 	Post-Auth-Type REJECT {
 		# log failed authentications in SQL, too.
-                                inner_auth_log
-		sql
+                    #inner_auth_log
+		#sql
 		attr_filter.access_reject
 
 		#

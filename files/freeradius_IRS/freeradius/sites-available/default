@@ -62,7 +62,7 @@ authorize {
           #  See policy.d/filter for the definition of the filter_username policy.
 	#filter_username
           # only use filter_username from version > 3.0.7 on  
-          # 위와 같은 이유로 다른 버전에서도 같이 사용하기 위해 아래와 같이 별도 파일로 정의해서 사용했다.
+        
           $INCLUDE ../eduroam-realm-checks.conf
 
 	#  'raddb/huntgroups' files.
@@ -79,15 +79,15 @@ authorize {
 	#  send proper CUI requests, then uncomment the
 	#  cui below and set "add_cui = yes" for these clients in clients.conf
 
-	cui
+	#cui
 
-          #  Operator-name is SP Role이기 때문에 여기에서는 default virtual서버에서 정의
+          #  Operator-name is SP role
           #  update request {
           #           Operator-Name := "1yourdomain.tld"
                # the literal number "1" above is an important prefix! Do not change it!
           #     }
 
-          # 아래 주석해제 if you want detailed logging 
+          # uncomment if you want detailed logging 
           #auth_log
 	chap
 	mschap
@@ -408,7 +408,7 @@ post-auth {
 	#  Create the CUI value and add the attribute to Access-Accept.
 	#  Uncomment the line below if *returning* the CUI.
 
-	cui
+	#cui
 
 	#
 	#  If you want to have a log of authentication replies,
@@ -416,7 +416,7 @@ post-auth {
 	#  'detail reply_log' module.
 	reply_log
           f_ticks
-          #      eduroam_log  
+          eduroam_log  
           #if  (  User-Name  != "radius_user@eduroam.xe" ) {
           #    redundant {
           #     sql
@@ -534,8 +534,8 @@ post-auth {
 	Post-Auth-Type REJECT {
 		# log failed authentications in SQL, too.
                    reply_log
-  #                 f_ticks
-  #                 eduroam_log
+                   f_ticks
+                   eduroam_log
                    redundant  {
 #		    sql
                        ok

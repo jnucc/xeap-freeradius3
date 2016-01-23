@@ -103,7 +103,7 @@ authorize {
 	#  is meant to mirror the "users" file.
 	#
 	#  See "Authorization Queries" in mods-available/sql
-          sql
+#          sql
 
 	#  The ldap module reads passwords from the LDAP database.
 #	ldap

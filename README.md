@@ -1,8 +1,15 @@
-##git is already preinstalld  clean os
+FreeRADIUS V3.0.10 on Ubuntu14.04.3 LTS Trusty 
 
-To do lab exercise, download cloned gitsite as below. 
+Note: Sample Configuration for lab exercise
+
+## presiqusite
+git is already installd in clean os
 
 ##change directory
 cd /home/xeap
-  
-git clone http://github.com/jnucc
+
+##To do lab exercise, download cloned gitsite as below.   
+git clone https://github.com/jnucc/xeap-freeradius3
+
+cd xeap-freeradius3
+

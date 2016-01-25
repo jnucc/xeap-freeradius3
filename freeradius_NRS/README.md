@@ -27,6 +27,8 @@ proxy_requests      = yes
 2. clients.conf 
  FreeRADIUS defines the connected RADIUS clients in the file /etc/freeradius/clients.conf. This file needs to hold all your connected Access Points and/or wired eduroam-enabled switches. You set a shared secret for each client and define these in the config file.
 
+modify => ip, secretkey, realm
+
 3. proxy.conf
  FreeRADIUS contains a wealth of options to define how requests are forwarded. These options are defined in the file /etc/freeradius/proxy.conf. For a single eduroam SP, these may seem overkill, but the required definitions for that purpose are rather static. Assuming you have two upstream servers to forward requests to, the following configuration will set these up - you only need to change the IP addresses and shared secrets in home_server stanzas.
 
@@ -37,29 +39,31 @@ realm "~.+$" {
 
 }
 
+modify => ip, secret, realm strip.....
+
 4. users
 This lab is with out backend database
-FreeRADIUS+AD manual  : 
-
+FreeRADIUS+AD manual  : https://docs.google.com/document/d/14LnsBznOw0w2fR7xgBJhzyWp1OztlKO6D5fws0XpjBI/edit
 
 5. F-Ticks
-F-Ticks is using syslog to deliver user login statistics. You can enable syslog logging for login events by defining a linelog module. In the /etc/freeradius/modules/ subdirectory, create a new file "f_ticks":
+F-Ticks is using syslog to deliver user login statistics. You can enable syslog logging for login events by defining a linelog module. In the /etc/freeradius/mods-available/ subdirectory, create a new file "f_ticks":
 
 
-6. filterinfg rule
+6. filtering rule
+/etc/freeradius/sites-available/default 
+ => include  authorize section 
+"/etc/freeradius/eduroam-realm-checks"
 
-
-7. eap.conf
- Certificate ...
-
+7. eap
+ Self Singing CA
+/etc/freeradius/mods-available/eap
 
 8. Operator Name
-Operator Name은 AP를 제공해주는 기관을 식별하기 위해서 입력을 해 주는 것이 때문에 
-SP Role이다. NRO에서는 입력하지 않아도 된다.
-- client.conf에서 AP에 입력을 해 주는 방법
-- Virtual Vertual Server default에서 update request로 
+Operator Name IS SP Role
+- client.conf  ap client define, OR
+- Virtual Vertual Server default section 
 authorize {
-                if ("%{client:shortname}" != "clients.conf에서 정의한 shortname e.g flr") {
+                if ("%{client:shortname}" != "clients.conf shortname e.g flr") {
                    update request {
                            Operator-Name := "1yourdomain.tld"
                             # the literal number "1" above is an important prefix! Do not change it!

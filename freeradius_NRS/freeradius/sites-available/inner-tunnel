@@ -242,7 +242,7 @@ authenticate {
 #  or rlm_sql module can handle this.
 #  The rlm_sql module is *much* faster
 session {
-#	radutmp
+	radutmp
 
 	#
 	#  See "Simultaneous Use Checking Queries" in sql.conf
@@ -273,7 +273,7 @@ post-auth {
 	#  If you want to have a log of authentication replies,
 	#  un-comment the following line, and enable the
 	#  'detail reply_log' module.
-                inner_auth_log
+          # inner_auth_log
 	reply_log
 
 	#
@@ -294,8 +294,6 @@ post-auth {
 	#  the 'modules' section.
 	#
 #	ldap
-
-
 	#
 	#  Instead of "use_tunneled_reply", uncomment the
 	#  next two "update" blocks.

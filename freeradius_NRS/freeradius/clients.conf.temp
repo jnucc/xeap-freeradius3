@@ -1,0 +1,56 @@
+# -*- text -*-
+##
+## clients.conf -- client configuration directives
+##
+##	$Id: 81f450102d9f1a3bc72264ab8d06543591fcab98 $
+
+#######################################################################
+#
+#  Define RADIUS clients (usually a NAS, Access Point, etc.).
+
+client localhost {
+	ipaddr = 127.0.0.1
+#	ipv6addr = ::	# any.  ::1 == localhost
+	proto = *
+	secret = testing123
+	require_message_authenticator = no
+
+#	shortname = localhost
+	nas_type	 = other	# localhost isn't usually a NAS...
+#	virtual_server = home1
+#	coa_server = coa
+
+	limit {
+		max_connections = 16
+		lifetime = 0
+		idle_timeout = 30
+	}
+	Operator-Name = 1YOUR_REALM
+#	add_cui = yes
+}
+
+client TLR1 {
+	ipaddr          = EDUROAM_TLR1
+	secret          = TLR_EDUROAM_SECRET
+          shortname     = TLR1
+	nas_type       = other
+          virtual_server = eduroam
+}
+
+#client TLR2 {
+#	ipaddr		= EDUROAM_TLR2
+#        secret          = TLR_EDUROAM_SECRET
+#        shortname       = TLR2
+#        nas_type        = other
+#        virtual_server = eduroam
+#}
+
+
+#### participating institution #####
+
+client EDUROAM_ILR1 {
+	secret = FLR_EDUROAM_SECRET
+	nas_type = other
+          require_message_authenticator = no
+	shortname = ILR1
+}

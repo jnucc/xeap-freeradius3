@@ -59,8 +59,10 @@ listen {
 }
 
 authorize {
-	#  See policy.d/filter for the definition of the filter_username policy.
+          #  See policy.d/filter for the definition of the filter_username policy.
 	#filter_username
+          # only use filter_username from version > 3.0.7 on  
+        
           $INCLUDE ../eduroam-realm-checks.conf
 
 	#  'raddb/huntgroups' files.
@@ -71,27 +73,35 @@ authorize {
 	#  for your local clients then uncomment the operator-name
 	#  below and set the operator-name for your clients in clients.conf
 
-	#operator-name
+	operator-name
 
 	#  If you want to generate CUI for some clients that do not
 	#  send proper CUI requests, then uncomment the
 	#  cui below and set "add_cui = yes" for these clients in clients.conf
 
 	#cui
-#	auth_log
+
+          #  Operator-name is SP role
+          #  update request {
+          #           Operator-Name := "1yourdomain.tld"
+               # the literal number "1" above is an important prefix! Do not change it!
+          #     }
+
+          # uncomment if you want detailed logging 
+          #auth_log
 	chap
 	mschap
 	#digest
          # wimax
-#	IPASS
+         # IPASS
 	suffix
 
-#	ntdomain
+         # ntdomain
 
 	eap {
 		ok = return
 	}
-#	unix
+         # unix
 
 	#
 	#  Read the 'users' file.  In v3, this is located in
@@ -351,7 +361,7 @@ accounting {
 #  or rlm_sql module can handle this.
 #  The rlm_sql module is *much* faster
 session {
-#	radutmp
+         radutmp
 
 	#
 	#  See "Simultaneous Use Checking Queries" in mods-available/sql
@@ -398,15 +408,15 @@ post-auth {
 	#  Create the CUI value and add the attribute to Access-Accept.
 	#  Uncomment the line below if *returning* the CUI.
 
-	cui
+	#cui
 
 	#
 	#  If you want to have a log of authentication replies,
 	#  un-comment the following line, and enable the
 	#  'detail reply_log' module.
 	reply_log
-         #       f_ticks
-         #      eduroam_log  
+          f_ticks
+          eduroam_log  
           #if  (  User-Name  != "radius_user@eduroam.xe" ) {
           #    redundant {
           #     sql
@@ -524,8 +534,8 @@ post-auth {
 	Post-Auth-Type REJECT {
 		# log failed authentications in SQL, too.
                    reply_log
-  #                 f_ticks
-  #                 eduroam_log
+                   f_ticks
+                   eduroam_log
                    redundant  {
 #		    sql
                        ok
@@ -555,7 +565,7 @@ pre-proxy {
 	# if the operator-name is found for this client.
 	# No need to uncomment this if you have already enabled this in
 	# the authorize section.
-	operator-name
+	# operator-name
 
 	#  The client requests the CUI by sending a CUI attribute
 	#  containing one zero byte.
@@ -566,15 +576,18 @@ pre-proxy {
 	#  as defined in the preproxy_users file.
 	files
 
+          if("%{Packet-Type}" != "Accounting-Request") {
+                    attr_filter.pre-proxy
+           }
 	#  Uncomment the following line if you want to filter requests
 	#  sent to remote servers based on the rules defined in the
 	#  'attrs.pre-proxy' file.
-        #attr_filter.pre-proxy
+          #attr_filter.pre-proxy
            
 	#  If you want to have a log of packets proxied to a home
 	#  server, un-comment the following line, and the
 	#  'detail pre_proxy_log' section, above.
-	#pre_proxy_log
+	pre_proxy_log
 }
 
 #
@@ -587,7 +600,7 @@ post-proxy {
 	#  If you want to have a log of replies from a home server,
 	#  un-comment the following line, and the 'detail post_proxy_log'
 	#  section, above.
-	#post_proxy_log
+	post_proxy_log
 
 	#  Uncomment the following line if you want to filter replies from
 	#  remote proxies based on the rules defined in the 'attrs' file.

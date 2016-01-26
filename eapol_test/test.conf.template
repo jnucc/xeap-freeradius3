@@ -11,6 +11,6 @@ network={
   #  Uncomment the following to perform server certificate validation.
   #ca_cert="/etc/pki/tls/certs/ca-bundle.crt"
   #ca_cert="/etc/ssl/certs/ca-certificates.crt"
-  ca_cert="/root/ca-bundle.crt"
+  #ca_cert="/root/ca-bundle.crt"
 }
 

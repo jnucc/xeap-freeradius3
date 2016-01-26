@@ -28,7 +28,7 @@ OUT2=$CONF.out2
 #echo $CONF $OUT
 
 # path to eapol test
-EAPOL_PROG=bin/eapol_test
+EAPOL_PROG=/usr/local/bin/eapol_test
 
 # default verbosity
 VERBOSE=0

@@ -15,19 +15,10 @@ echo -n "6) Input your Country Domain (e.g. 'BT') : "
 read VAR_COUNTRY_DOMAIN
 
 #clients.conf setup
-sed 's/YOUR_REALM/'"$VAR_REALM1"'/' clients.conf.temp > clients_tmp1
-sed 's/TLR1_IP/'"$VAR_IP1"'/' clients_tmp1 > clients_tmp2
-sed 's/IRS1_IP/'"$VAR_IP2"'/' clients_tmp2 > clients_tmp3
-sed 's/EDUROAM_SECRET/'"$VAR_SECRET_KEY"'/' clients_tmp3 > clients.conf
-rm -f clients_tmp*
+sed -e "s/YOUR_REALM/$VAR_REALM1/" -e "s/TLR1_IP/$VAR_IP1/" -e "s/IRS1_IP/$VAR_IP2/" -e "s/EDUROAM_SECRET/$VAR_SECRET_KEY/" clients.conf.temp > clients.conf
 
 #proxy.conf setup
-sed 's/YOUR_REALM/'"$VAR_REALM1"'/' proxy.conf.temp > proxy_tmp1
-sed 's/IRS_REALM/'"$VAR_REALM2"'/' proxy_tmp1 > proxy_tmp2
-sed 's/TLR1_IP/'"$VAR_IP1"'/' proxy_tmp2 > proxy_tmp3
-sed 's/IRS1_IP/'"$VAR_IP2"'/' proxy_tmp3 > proxy_tmp4
-sed 's/EDUROAM_SECRET/'"$VAR_SECRET_KEY"'/' proxy_tmp4 > proxy.conf
-rm -f proxy_tmp*
+sed -e "s/YOUR_REALM/$VAR_REALM1/" -e "s/IRS_REALM/$VAR_REALM2/" -e "s/TLR1_IP/$VAR_IP1/" -e "s/IRS1_IP/$VAR_IP2/" -e "s/EDUROAM_SECRET/$VAR_SECRET_KEY/" proxy.conf.temp > proxy.conf
 
 #f_ticks setup
 sed 's/YOUR_COUNTRY/'"$VAR_COUNTRY_DOMAIN"'/' f_ticks.temp > ./mods-available/f_ticks

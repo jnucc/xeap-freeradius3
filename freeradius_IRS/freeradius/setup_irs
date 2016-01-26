@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo  "\n\n======= Setup IRS configuration =======\n"
-echo -n "1) Input your reaml (e.g. 'test.rub.edu.bt') : "
+echo -n "1) Input your reaml (e.g. 'test.rub.edu.bt) : "
 read VAR_REALM
 echo -n "2) Input your NRS IP : "
 read VAR_IP
@@ -11,16 +11,10 @@ echo -n "4) Input your Country Domain (e.g. 'BT') : "
 read VAR_COUNTRY_DOMAIN
 
 #clients.conf setup
-sed 's/YOUR_REALM/'"$VAR_REALM"'/' clients.conf.temp > clients_tmp1
-sed 's/FLR1_IP/'"$VAR_IP"'/' clients_tmp1 > clients_tmp2
-sed 's/EDUROAM_SECRET/'"$VAR_SECRET_KEY"'/' clients_tmp2 > clients.conf
-rm -f clients_tmp*
+sed -e "s/YOUR_REALM/$VAR_REALM/" -e "s/FLR1_IP/$VAR_IP/" -e "s/EDUROAM_SECRET/$VAR_SECRET_KEY/" clients.conf.temp > clients.conf
 
 #proxy.conf setup
-sed 's/YOUR_REALM/'"$VAR_REALM"'/' proxy.conf.temp > proxy_tmp1
-sed 's/FLR1_IP/'"$VAR_IP"'/' proxy_tmp1 > proxy_tmp2
-sed 's/EDUROAM_SECRET/'"$VAR_SECRET_KEY"'/' proxy_tmp2 > proxy.conf
-rm -f proxy_tmp*
+sed -e "s/YOUR_REALM/$VAR_REALM/" -e "s/FLR1_IP/$VAR_IP/" -e "s/EDUROAM_SECRET/$VAR_SECRET_KEY/" proxy.conf.temp > proxy.conf
 
 #f_ticks setup
 sed 's/YOUR_COUNTRY/'"$VAR_COUNTRY_DOMAIN"'/' f_ticks.temp > ./mods-available/f_ticks

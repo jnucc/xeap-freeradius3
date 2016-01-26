@@ -1,13 +1,13 @@
 #!/bin/bash
 
 echo  "\n\n======= Setup IRS configuration =======\n"
-echo -n "1) Input your reaml (e.g. 'test1.ac.kr') : "
+echo -n "1) Input your reaml (e.g. 'test.rub.edu.bt') : "
 read VAR_REALM
 echo -n "2) Input your NRS IP : "
 read VAR_IP
 echo -n "3) Input your secret key (e.g. 'eduroamkey') : "
 read VAR_SECRET_KEY
-echo -n "4) Input your Country Domain (e.g. 'KR') : "
+echo -n "4) Input your Country Domain (e.g. 'BT') : "
 read VAR_COUNTRY_DOMAIN
 
 #clients.conf setup

@@ -46,6 +46,7 @@ realm YOUR_REALM {
       type     = auth+acct
       authhost = LOCAL
       accthost = LOCAL
+      secret    = EDUROAM_SECRET
       strip
 }
  

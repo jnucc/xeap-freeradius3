@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo  "\n\n======= Setup NRS proxy.conf =======\n"
+echo  "\n\n======= Setup NRS configuration =======\n"
 echo -n "1) Input your realm : "
 read VAR_REALM1
 echo -n "2) Input your IRS realm : "
@@ -12,14 +12,22 @@ read VAR_IP2
 echo -n "5) Input your secret key (e.g. 'eduroamkey') : "
 read VAR_SECRET_KEY
 
+#clients.conf setup
+sed 's/YOUR_REALM/'"$VAR_REALM1"'/' clients.conf.temp > clients_tmp1
+sed 's/TLR1_IP/'"$VAR_IP1"'/' clients_tmp1 > clients_tmp2
+sed 's/IRS1_IP/'"$VAR_IP2"'/' clients_tmp2 > clients_tmp3
+sed 's/EDUROAM_SECRET/'"$VAR_SECRET_KEY"'/' clients_tmp3 > clients.conf
+rm -f clients_tmp*
+
+#proxy.conf setup
 sed 's/YOUR_REALM/'"$VAR_REALM1"'/' proxy.conf.temp > proxy_tmp1
 sed 's/IRS_REALM/'"$VAR_REALM2"'/' proxy_tmp1 > proxy_tmp2
 sed 's/TLR1_IP/'"$VAR_IP1"'/' proxy_tmp2 > proxy_tmp3
 sed 's/IRS1_IP/'"$VAR_IP2"'/' proxy_tmp3 > proxy_tmp4
 sed 's/EDUROAM_SECRET/'"$VAR_SECRET_KEY"'/' proxy_tmp4 > proxy.conf
-
 rm -f proxy_tmp*
-cp -rf * /etc/freeradius
+
+cp -rf */etc/freeradius
 echo "\n\ndone!!!\n\n"
 
 

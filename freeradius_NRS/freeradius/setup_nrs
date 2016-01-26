@@ -1,9 +1,9 @@
 #!/bin/bash
 
 echo  "\n\n======= Setup NRS configuration =======\n"
-echo -n "1) Input your realm : "
+echo -n "1) Input your realm (e.g. 'test1.ac.kr') : "
 read VAR_REALM1
-echo -n "2) Input your IRS realm : "
+echo -n "2) Input your IRS realm (e.g. 'test2.ac.kr') : "
 read VAR_REALM2
 echo -n "3) Input your TLR IP : "
 read VAR_IP1
@@ -11,6 +11,8 @@ echo -n "4) Input your IRS IP : "
 read VAR_IP2
 echo -n "5) Input your secret key (e.g. 'eduroamkey') : "
 read VAR_SECRET_KEY
+echo -n "6) Input your Country Domain (e.g. 'KR') : "
+read VAR_COUNTRY_DOMAIN
 
 #clients.conf setup
 sed 's/YOUR_REALM/'"$VAR_REALM1"'/' clients.conf.temp > clients_tmp1
@@ -27,7 +29,11 @@ sed 's/IRS1_IP/'"$VAR_IP2"'/' proxy_tmp3 > proxy_tmp4
 sed 's/EDUROAM_SECRET/'"$VAR_SECRET_KEY"'/' proxy_tmp4 > proxy.conf
 rm -f proxy_tmp*
 
+#f_ticks setup
+sed 's/YOUR_COUNTRY/'"$VAR_COUNTRY_DOMAIN" | tr [:lower:] [:upper:]'/' f_ticks.temp > ./mods-available/f_ticks
+
 cp -rf * /etc/freeradius
+
 echo "\n\ndone!!!\n\n"
 
 

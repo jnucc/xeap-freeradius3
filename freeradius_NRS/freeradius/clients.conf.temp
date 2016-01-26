@@ -29,18 +29,18 @@ client localhost {
 #	add_cui = yes
 }
 
-client TLR1 {
-	ipaddr          = EDUROAM_TLR1
-	secret          = TLR_EDUROAM_SECRET
-          shortname     = TLR1
+client tlr1 {
+	ipaddr          = TLR1_IP
+	secret          = EDUROAM_SECRET
+          shortname     = tlr1
 	nas_type       = other
           virtual_server = eduroam
 }
 
-#client TLR2 {
-#	ipaddr		= EDUROAM_TLR2
-#        secret          = TLR_EDUROAM_SECRET
-#        shortname       = TLR2
+#client tlr2 {
+#	ipaddr		= TLR2_IP
+#        secret          = EDUROAM_SECRET
+#        shortname       = tlr2
 #        nas_type        = other
 #        virtual_server = eduroam
 #}
@@ -48,9 +48,9 @@ client TLR1 {
 
 #### participating institution #####
 
-client EDUROAM_ILR1 {
-	secret = FLR_EDUROAM_SECRET
+client IRS1_IP {
+	secret = EDUROAM_SECRET
 	nas_type = other
           require_message_authenticator = no
-	shortname = ILR1
+	shortname = irs1
 }

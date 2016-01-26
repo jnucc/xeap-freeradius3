@@ -46,62 +46,61 @@ realm YOUR_REALM {
       type     = auth+acct
       authhost = LOCAL
       accthost = LOCAL
-      secret = ILR_EDUROAM_SECRET
       strip
 }
  
 # Radius-Proxy Server of APAC TOP LEVEL RADIUS
-home_server TLR1 {
-        ipaddr                  = EDUROAM_TLR1
+home_server tlr1 {
+        ipaddr                  = TLR1_IP
         port                     = 1812
-        secret                  = TLR_EDUROAM_SECRET
+        secret                  = EDUROAM_SECRET
         status_check         = status-server
 }
-#home_server TLR2 {
-#        ipaddr                  = EDUROAM_TLR2
+#home_server tlr2 {
+#        ipaddr                  = TLR2_IP
 #        port                     = 1812
-#        secret                  = TLR_EDUROAM_SECRET
+#        secret                  = EDUROAM_SECRET
 #        status_check         = status-server
 #}
  
-home_server_pool EDUROAM-TLR {
+home_server_pool eduroam-tlr {
         type                         = fail-over
-        home_server             = TLR1
-#      home_server		= TLR2
+        home_server              = tlr1
+#      home_server	        = tlr2
         nostrip
 }
 
 ## Participating institution RADIUS Servers define
 
-home_server_pool IRS1_REALM-pool  {
+home_server_pool IRS_REALM-pool  {
         type                    = fail-over
         home_server        = IRS_REALM1
 #      home_server        = IRS_REALM2
 }
 
-home_server  IRS1_REALM1 {
+home_server  IRS_REALM1 {
         type                    = auth
-        ipaddr                 = EDUROAM_ILR1
+        ipaddr                 = IRS_IP1
         port                    = 1812
-        secret                 = FLR_EDUROAM_SECRET
+        secret                 = EDUROAM_SECRET
 }
 
-#home_server  IRS1_REALM2 {
+#home_server  IRS_REALM2 {
 #        type                    = auth
-#        ipaddr                 = EDUROAM_ILR2
+#        ipaddr                 = IRS_IP2
 #        port                    = 1812
-#        secret                 = FLR_EDUROAM_SECRET
+#        secret                 = EDUROAM_SECRET
 #}
 
 
 # Forwarding rule
-realm IRS1_REALM  {                                                            
+realm IRS_REALM  {                                                            
               type = auth  
-              auth_pool         =  IRS1_REALM-pool
+              auth_pool         =  IRS_REALM-pool
               nostrip
 }  
 
 realm "~.+$" {
-        pool                    = EDUROAM-TLR
+        pool                    = eduroam-tlr
         nostrip
 }

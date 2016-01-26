@@ -46,32 +46,31 @@ realm YOUR_REALM {
       type     = auth+acct
       authhost = LOCAL
       accthost = LOCAL
-      secret = ILR_EDUROAM_SECRET
       strip
 }
  
 # Radius-Proxy Server of National Roaming Operator
-home_server FLR1 {
-        ipaddr                  = EDUROAM_FLR1
+home_server flr1 {
+        ipaddr                  = FLR1_IP
         port                     = 1812
-        secret                  = FLR_EDUROAM_SECRET
+        secret                  = EDUROAM_SECRET
         status_check         = status-server
 }
-#home_server FLR2 {
-#        ipaddr                  = EDUROAM_FLR2
+#home_server flr2 {
+#        ipaddr                  = FLR2_IP
 #        port                     = 1812
-#        secret                  = FLR_EDUROAM_SECRET
+#        secret                  = EDUROAM_SECRET
 #        status_check         = status-server
 #}
  
-home_server_pool EDUROAM {
+home_server_pool eduroam {
         type                         = fail-over
-        home_server             = FLR1
-#      home_server		= FLR2
+        home_server             = flr1
+#      home_server		= flr2
         nostrip
 }
  
 realm "~.+$" {
-        pool                    = EDUROAM
+        pool                    = eduroam
         nostrip
 }

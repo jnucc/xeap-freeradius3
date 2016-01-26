@@ -29,18 +29,18 @@ client localhost {
 #	add_cui = yes
 }
 
-client FLR1 {
-	ipaddr          = EDUROAM_FLR1
-	secret          = FLR_EDUROAM_SECRET
-          shortname     = FLR1
+client flr1 {
+	ipaddr          = FLR1_IP
+	secret          = EDUROAM_SECRET
+          shortname     = flr1
 	nas_type       = other
           virtual_server = eduroam
 }
 
-#client FLR2 {
-#	ipaddr		= EDUROAM_FLR2
-#        secret          = FLR_EDUROAM_SECRET
-#        shortname       = FLR2
+#client flr2 {
+#	ipaddr		= FLR2_IP
+#        secret          = EDUROAM_SECRET
+#        shortname       = flr2
 #        nas_type        = other
 #        virtual_server = eduroam
 #}
@@ -48,8 +48,8 @@ client FLR1 {
 
 # Your Institution AP  example        #
 #client your-ap1 {
-#         ipaddr   =  ILR_AP_SECRET
-#	secret  =   ILR_EDUROAM_SECRET
+#         ipaddr   =  AP_IP
+#	secret  =   EDUROAM_SECRET
 #	nas_type = other
 #	Operator-Name = 1YOUR_REALM
 #	add_cui = yes

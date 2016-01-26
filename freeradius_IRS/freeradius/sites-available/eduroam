@@ -33,7 +33,7 @@ authorize {
 	#  If you want to generate CUI for some clients that do not
 	#  send proper CUI requests, then uncomment the
 	#  cui below and set "add_cui = yes" for these clients in clients.conf
-	cui
+	#cui
 	auth_log
 	chap
 	mschap
@@ -59,7 +59,7 @@ authorize {
 	#  is meant to mirror the "users" file.
 	#
 	#  See "Authorization Queries" in mods-available/sql
-          sql
+          #sql
 
 	#  The ldap module reads passwords from the LDAP database.
 #	ldap
@@ -231,7 +231,7 @@ accounting {
 	#  are also logged in the detail file.
 	detail
           redundant {
-             sql
+             #sql
              ok
           }
 
@@ -313,7 +313,7 @@ session {
 	#  See "Simultaneous Use Checking Queries" in mods-available/sql
 #	sql
           redundant {
-             sql
+             #sql
              ok
           }
 }
@@ -353,7 +353,7 @@ post-auth {
 
 	#  Create the CUI value and add the attribute to Access-Accept.
 	#  Uncomment the line below if *returning* the CUI.
-	cui
+	#cui
 
 	#
 	#  If you want to have a log of authentication replies,
@@ -363,7 +363,7 @@ post-auth {
                 eduroam_log
           if  (  User-Name  != "radius_user@eduroam.xe" ) {
               redundant {
-                 sql
+                 #sql
                  ok
               }
           }
@@ -480,7 +480,7 @@ post-auth {
                                       eduroam_log
                                       reply_log              
                    redundant  {
-		    sql
+		    #sql
                        ok
                    } 
 		attr_filter.access_reject
@@ -513,7 +513,7 @@ pre-proxy {
 	#  The client requests the CUI by sending a CUI attribute
 	#  containing one zero byte.
 	#  Uncomment the line below if *requesting* the CUI.
-	cui
+	#cui
 
 	#  Uncomment the following line if you want to change attributes
 	#  as defined in the preproxy_users file.

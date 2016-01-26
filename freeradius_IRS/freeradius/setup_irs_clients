@@ -13,7 +13,7 @@ sed 's/FLR1_IP/'"$VAR_IP"'/' clients_tmp1 > clients_tmp2
 sed 's/EDUROAM_SECRET/'"$VAR_SECRET_KEY"'/' clients_tmp2 > clients.conf
 
 rm -f clients_tmp*
-
+cp -rf * /etc/freeradius
 echo "\n\ndone!!!\n\n"
 
 

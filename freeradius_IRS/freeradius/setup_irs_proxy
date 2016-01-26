@@ -13,7 +13,7 @@ sed 's/FLR1_IP/'"$VAR_IP"'/' proxy_tmp1 > proxy_tmp2
 sed 's/EDUROAM_SECRET/'"$VAR_SECRET_KEY"'/' proxy_tmp2 > proxy.conf
 
 rm -f proxy_tmp*
-
+cp -rf * /etc/freeradius
 echo "\n\ndone!!!\n\n"
 
 

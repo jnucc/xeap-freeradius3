@@ -30,7 +30,7 @@ sed 's/EDUROAM_SECRET/'"$VAR_SECRET_KEY"'/' proxy_tmp4 > proxy.conf
 rm -f proxy_tmp*
 
 #f_ticks setup
-sed 's/YOUR_COUNTRY/'"$VAR_COUNTRY_DOMAIN" | tr [:lower:] [:upper:]'/' f_ticks.temp > ./mods-available/f_ticks
+sed 's/YOUR_COUNTRY/'"$VAR_COUNTRY_DOMAIN"'/' f_ticks.temp > ./mods-available/f_ticks
 
 cp -rf * /etc/freeradius
 

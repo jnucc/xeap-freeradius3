@@ -1,0 +1,24 @@
+#!/bin/bash
+
+echo  "\n\n======= Setup NRS clients.conf =======\n"
+echo -n "1) Input your reaml : "
+read VAR_REALM
+echo -n "2) Input your TLR IP : "
+read VAR_IP1
+echo -n "3) Input your IRS IP : "
+read VAR_IP2
+echo -n "4) Input your secret key (e.g. 'eduroamkey') : "
+read VAR_SECRET_KEY
+
+sed 's/YOUR_REALM/'"$VAR_REALM"'/' clients.conf.temp > clients_tmp1
+sed 's/TLR1_IP/'"$VAR_IP1"'/' clients_tmp1 > clients_tmp2
+sed 's/IRS1_IP/'"$VAR_IP2"'/' clients_tmp2 > clients_tmp3
+sed 's/EDUROAM_SECRET/'"$VAR_SECRET_KEY"'/' clients_tmp3 > /etc/freeradius/client.conf
+
+rm -f clients_tmp*
+
+echo "\n\ndone!!!\n\n"
+
+
+
+

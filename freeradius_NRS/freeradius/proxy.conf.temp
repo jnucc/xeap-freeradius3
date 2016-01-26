@@ -80,14 +80,14 @@ home_server_pool IRS_REALM-pool  {
 
 home_server  IRS_REALM1 {
         type                    = auth
-        ipaddr                 = IRS_IP1
+        ipaddr                 = IRS1_IP
         port                    = 1812
         secret                 = EDUROAM_SECRET
 }
 
 #home_server  IRS_REALM2 {
 #        type                    = auth
-#        ipaddr                 = IRS_IP2
+#        ipaddr                 = IRS2_IP
 #        port                    = 1812
 #        secret                 = EDUROAM_SECRET
 #}

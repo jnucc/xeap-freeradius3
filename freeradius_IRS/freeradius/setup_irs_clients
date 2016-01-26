@@ -10,7 +10,7 @@ read VAR_SECRET_KEY
 
 sed 's/YOUR_REALM/'"$VAR_REALM"'/' clients.conf.temp > clients_tmp1
 sed 's/FLR1_IP/'"$VAR_IP"'/' clients_tmp1 > clients_tmp2
-sed 's/EDUROAM_SECRET/'"$VAR_SECRET_KEY"'/' clients_tmp2 > /etc/freeradius/client.conf
+sed 's/EDUROAM_SECRET/'"$VAR_SECRET_KEY"'/' clients_tmp2 > clients.conf
 
 rm -f clients_tmp*
 

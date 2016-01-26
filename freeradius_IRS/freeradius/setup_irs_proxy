@@ -10,7 +10,7 @@ read VAR_SECRET_KEY
 
 sed 's/YOUR_REALM/'"$VAR_REALM"'/' proxy.conf.temp > proxy_tmp1
 sed 's/FLR1_IP/'"$VAR_IP"'/' proxy_tmp1 > proxy_tmp2
-sed 's/EDUROAM_SECRET/'"$VAR_SECRET_KEY"'/' proxy_tmp2 > /etc/freeradius/proxy.conf
+sed 's/EDUROAM_SECRET/'"$VAR_SECRET_KEY"'/' proxy_tmp2 > proxy.conf
 
 rm -f proxy_tmp*
 

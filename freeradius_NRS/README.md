@@ -1,14 +1,15 @@
 FreeRADIUS 3   Simple Hands on lab 
 
 Installation
-http://wiki.eduroam.kr/display/EKW/Deploying+FreeRADIUS+for+eduroam
+http://wiki.eduroam.kr/
 
 Base configuration 
 Configuration files that have been edited in /etc/freeradius
 radiusd.conf
 clients.conf 
 proxy.conf
-mods-config/files/authrorize   #new location for /etc/freeradius/users  symbolic link
+mods-config/files/authrorize   
+#new location for /etc/freeradius/users symbolic link
 mods-available/eap
 
 1. radiusd.conf

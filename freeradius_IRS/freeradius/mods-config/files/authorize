@@ -87,7 +87,7 @@
 bob	Cleartext-Password := "hello"
 	Reply-Message := "Hello, %{User-Name}"
 #
-user1	Cleartext-Password := "Password1!"
+user	Cleartext-Password := "Password1!"
 	Reply-Message := "user1, %{User-Name}"
 #
 #

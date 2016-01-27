@@ -23,10 +23,15 @@ sed -e "s/YOUR_REALM/$VAR_REALM1/" -e "s/IRS_REALM/$VAR_REALM2/" -e "s/TLR1_IP/$
 #f_ticks setup
 sed 's/YOUR_COUNTRY/'"$VAR_COUNTRY_DOMAIN"'/' f_ticks.temp > ./mods-available/f_ticks
 
+
+#eapol setup
+cp /home/xeap/xeap-freeradius3/eapol_test/eapol_test /usr/local/bin
+chmod 755 /usr/local/bin/eapol_test
+
 cp -rf * /etc/freeradius
 
+#simbolic setup
+ln -s -f /etc/freeradius/sites-available/eduroam /etc/freeradius/sites-enabled/eduroam
+ln -s -f /etc/freeradius/mods-available/f_ticks /etc/freeradius/mods-enabled/f_ticks
+
 echo "\n\ndone!!!\n\n"
-
-
-
-

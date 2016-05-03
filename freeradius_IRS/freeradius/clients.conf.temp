@@ -32,9 +32,10 @@ client localhost {
 client flr1 {
 	ipaddr          = FLR1_IP
 	secret          = EDUROAM_SECRET
-          shortname     = flr1
+        shortname     = flr1
 	nas_type       = other
-          virtual_server = eduroam
+        virtual_server = eduroam
+        Operator-Name  = 1tlr-operator-name
 }
 
 #client flr2 {
@@ -43,6 +44,7 @@ client flr1 {
 #        shortname       = flr2
 #        nas_type        = other
 #        virtual_server = eduroam
+#        Operator-Name  = 1tlr-operator-name         
 #}
 
 

@@ -32,9 +32,10 @@ client localhost {
 client tlr1 {
 	ipaddr          = TLR1_IP
 	secret          = EDUROAM_SECRET
-          shortname     = tlr1
+        shortname     = tlr1
 	nas_type       = other
-          virtual_server = eduroam
+        virtual_server = eduroam
+        Operator-Name = 1tlr-operator-name
 }
 
 #client tlr2 {
@@ -43,6 +44,7 @@ client tlr1 {
 #        shortname       = tlr2
 #        nas_type        = other
 #        virtual_server = eduroam
+#        Operator-Name  = 1tlr-operator-name
 #}
 
 
@@ -51,6 +53,6 @@ client tlr1 {
 client IRS1_IP {
 	secret = EDUROAM_SECRET
 	nas_type = other
-          require_message_authenticator = no
+        require_message_authenticator = no
 	shortname = irs1
 }

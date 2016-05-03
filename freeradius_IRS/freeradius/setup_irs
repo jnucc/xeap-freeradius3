@@ -28,7 +28,6 @@ cp -rf * /etc/freeradius
 #simbolic setup
 ln -s -f /etc/freeradius/sites-available/eduroam /etc/freeradius/sites-enabled/eduroam
 ln -s -f /etc/freeradius/mods-available/f_ticks /etc/freeradius/mods-enabled/f_ticks
-ln -s -f /etc/freeradius/mods-available/linelog /etc/freeradius/mods-enabled/linelog
 
 echo "\n\ndone!!!\n\n"
 

@@ -416,14 +416,8 @@ post-auth {
 	#  'detail reply_log' module.
 	reply_log
           f_ticks
-          eduroam_log  
-          #if  (  User-Name  != "radius_user@eduroam.xe" ) {
-          #    redundant {
-          #     sql
-          #        ok
-          #    }
-          # }
-
+          eduroam_log
+          linelog
 	#
 	#  After authenticating the user, do another SQL query.
 	#
@@ -536,6 +530,7 @@ post-auth {
                    reply_log
                    f_ticks
                    eduroam_log
+                   linelog
                    redundant  {
 #		    sql
                        ok

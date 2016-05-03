@@ -360,7 +360,9 @@ post-auth {
 	#  un-comment the following line, and enable the
 	#  'detail reply_log' module.
 	reply_log
-                eduroam_log
+        eduroam_log
+        f_ticks
+        linelog
           if  (  User-Name  != "radius_user@eduroam.xe" ) {
               redundant {
                  #sql
@@ -477,13 +479,15 @@ post-auth {
 	#
 	Post-Auth-Type REJECT {
 		# log failed authentications in SQL, too.
-                                      eduroam_log
-                                      reply_log              
-                   redundant  {
+		reply_log 
+                eduroam_log
+                f_ticks
+                linelog
+               redundant  {
 		    #sql
                        ok
                    } 
-		attr_filter.access_reject
+	        attr_filter.access_reject
 
 		# Insert EAP-Failure message if the request was
 		# rejected by policy instead of because of an
